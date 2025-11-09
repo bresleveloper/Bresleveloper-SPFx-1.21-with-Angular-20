@@ -1,6 +1,6 @@
 # Bresleveloper AI SPFx Angular 20 Langchain 1.0.x
 
-For IT or Management: [Read Power Point](TDB/Azure_AI_Solution_SPFx_Dark.pptx)
+For IT or Management: [Read Power Point](https://github.com/bresleveloper/Bresleveloper-SPFx-1.21-with-Angular-20/blob/master/Bresleveloper-AI-SPFx-Angular20-Langchain/Azure_AI_Solution_SPFx_Dark.pptx)
 
 ## Install Angular Dependencies
 

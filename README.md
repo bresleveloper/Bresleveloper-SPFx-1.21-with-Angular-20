@@ -1,7 +1,9 @@
 # Bresleveloper SPFx 1.21 with Angular 20
 
+
+* [Watch the Youtube Tutorial (Hebrew)](TBD)
 * [Based on my spfx angular tutorial](https://github.com/bresleveloper/angular-spfx) - UPDATED VERSION, READ FOREWARD
-* [SPFx Angular Langchain Local AI](TDB) - sub project for using local AI to query SP
+* [SPFx Angular Langchain Local AI](https://github.com/bresleveloper/Bresleveloper-SPFx-1.21-with-Angular-20/tree/master/Bresleveloper-AI-SPFx-Angular20-Langchain) - sub project for using local AI to query SP
 
 
 
