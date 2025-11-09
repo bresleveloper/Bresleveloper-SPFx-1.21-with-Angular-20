@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "bresleveloper-spfx-1-21-angular-20-client-side-solution",
+    "id": "eea85786-1294-458a-841b-6b6e3a7a024a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "bresleveloper-spfx-1-21-angular-20 description"
+      },
+      "longDescription": {
+        "default": "bresleveloper-spfx-1-21-angular-20 description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "bresleveloper-spfx-1-21-angular-20 Feature",
+        "description": "The feature that activates elements of the bresleveloper-spfx-1-21-angular-20 solution.",
+        "id": "0f1e4b75-9561-4543-bb64-ccac82edfaee",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/bresleveloper-spfx-1-21-angular-20.sppkg"
+  }
+}

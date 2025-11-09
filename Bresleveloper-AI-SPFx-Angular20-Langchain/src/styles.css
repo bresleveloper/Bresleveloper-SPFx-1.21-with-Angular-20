@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+.big, .big *{
+    font-size: xx-large;
+}
+
+.big input{
+    width: 75%;
+    margin-right: 3%;
+}

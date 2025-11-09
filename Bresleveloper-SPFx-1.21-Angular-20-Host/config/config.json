@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "bresleveloper-angular-20-wrapper-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/bresleveloperAngular20Wrapper/BresleveloperAngular20WrapperWebPart.js",
+          "manifest": "./src/webparts/bresleveloperAngular20Wrapper/BresleveloperAngular20WrapperWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "BresleveloperAngular20WrapperWebPartStrings": "lib/webparts/bresleveloperAngular20Wrapper/loc/{locale}.js"
+  }
+}

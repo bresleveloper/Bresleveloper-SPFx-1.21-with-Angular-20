@@ -1,0 +1,24 @@
+<p>example-get-list-items works!</p>
+
+<!-- <h3>async example</h3>
+<ul>
+    @for (item of (myItemsAsync | async); track $index) {
+        <li>ID : {{item.ID}} - Title : {{item.Title}} - {{item?.projectsite?.Description}}</li>
+    }
+</ul> -->
+
+
+<h3>signal example</h3>
+<ul>
+    @for (item of myItemsSignal(); track $index) {
+        <li>ID : {{item.ID}} - Title : {{item.Title}} - {{item?.projectsite?.Description}}</li>
+    }
+</ul>
+
+
+<h3>cdr.markForCheck example</h3>
+<ul>
+    @for (item of myItemsByMark; track $index) {
+        <li>ID : {{item.ID}} - Title : {{item.Title}} - {{item?.projectsite?.Description}}</li>
+    }
+</ul>
