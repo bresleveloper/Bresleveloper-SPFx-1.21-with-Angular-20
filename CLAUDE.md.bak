@@ -17,6 +17,60 @@ This is a monorepo containing three interconnected projects that demonstrate how
 - TypeScript 5.3.3
 - LangChain 1.0.x (AI project only)
 
+## Common Workflow
+
+### Initial Setup
+```bash
+# Clone specific project using @bresleveloper/starter (recommended)
+npm install @bresleveloper/starter
+bresleveloper dup myNewProject https://github.com/bresleveloper/[repo-url]
+
+# OR clone entire repository
+git clone [repo-url]
+
+# Navigate to desired project and install dependencies
+cd Bresleveloper-Angular20-for-SPFX-Example
+npm install
+```
+
+### Development Workflow
+
+**1. SPFx Host Development:**
+```bash
+cd Bresleveloper-SPFx-1.21-Angular-20-Host
+
+# Development build
+gulp bundle
+
+# Start local workbench (HTTPS port 4321)
+gulp serve
+
+# Production build and package
+gulp clean && gulp build && gulp bundle --ship && gulp package-solution --ship
+```
+
+**2. Angular Development:**
+```bash
+cd Bresleveloper-Angular20-for-SPFX-Example  # or AI-SPFx-Angular20-Langchain
+
+# Development server (port 4200)
+npm start
+
+# Production build (REQUIRED: no output hashing for SPFx integration)
+ng build --output-hashing=none
+
+# Watch mode
+npm run watch
+```
+
+**3. SharePoint Deployment:**
+- Upload compiled `.sppkg` from `Bresleveloper-SPFx-1.21-Angular-20-Host/sharepoint/solution/` to SharePoint App Catalog
+- Create document library named `BresleveloperAngularSPFX` in target SharePoint site
+- Build Angular project with `ng build --output-hashing=none`
+- Upload Angular build output (from `dist/[project-name]/browser/`) to `BresleveloperAngularSPFX` library
+- Add web part `bresleveloper-angular-20-wrapper` to SharePoint page
+- Configure web part properties to point to Angular component
+
 ## Architecture: Global Service Pattern
 
 All three projects share a **singleton global service pattern** where SharePoint and Microsoft Graph services are injected into the global scope on first render:

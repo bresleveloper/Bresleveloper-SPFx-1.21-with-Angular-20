@@ -1,7 +1,7 @@
 # Bresleveloper SPFx 1.21 with Angular 20
 
 
-* [Watch the Youtube Tutorial (Hebrew)](https://youtu.be/HvG3N_g9xRg)
+* [Watch the Youtube Tutorial (Hebrew)](TBD)
 * [Based on my spfx angular tutorial](https://github.com/bresleveloper/angular-spfx) - UPDATED VERSION, READ FOREWARD
 * [SPFx Angular Langchain Local AI](https://github.com/bresleveloper/Bresleveloper-SPFx-1.21-with-Angular-20/tree/master/Bresleveloper-AI-SPFx-Angular20-Langchain) - sub project for using local AI to query SP
 
@@ -20,7 +20,7 @@
 
 **@bresleveloper/starter**
 * `npm install @bresleveloper/starter`
-* `bresleveloper dup myNewProject https://github.com/bresleveloper/Bresleveloper-SPFx-1.21-with-Angular-20`
+* `bresleveloper dup myNewProject https://github.com/bresleveloper/TBD`
 * goto relevant project (delete the rest) and `npm install` 
 
 
