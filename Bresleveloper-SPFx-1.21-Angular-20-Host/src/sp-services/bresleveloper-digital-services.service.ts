@@ -67,4 +67,8 @@ export interface ISP_Service {
     toDate_ddMMMyyyy(s: string): string;
 
     search(query: string, selectproperties?: string, sortlist?: string, rowlimit?: number): Promise<any>;
+
+    addAttachment(web:string, listName: string, id: number, file: File): Promise<any>;
+
+    deleteAttachment(odata_id:string): Promise<any>
 }

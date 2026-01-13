@@ -238,9 +238,67 @@ export default class SP_Service implements ISP_Service {
         return promise;
     }
     
+    public addAttachment(web:string, listName: string, id: number, file: File){
+        console.log("addAttachment", web, listName, id, file);
+        
+        return new Promise((resolve, reject) => {
+    
+            let u = `${web}/_api/lists/GetByTitle('${listName}')/items(${id})/AttachmentFiles/add(FileName='${file.name}')`;
+    
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                //@ts-ignore
+                let buffer:any = e.target.result;
+
+                this.context.spHttpClient.post(u,
+                    SPHttpClient.configurations.v1, {
+                    headers: {
+                        //'Accept': 'application/json;odata=nometadata',
+                        'Accept': 'application/json;odata=verbose',
+                        'Content-type': 'application/json;odata=verbose',
+                        'content-length': buffer.byteLength,
+                        'odata-version': '',
+                    },
+                    body: buffer,
+                    method: 'POST'
+                })
+                .then((response: SPHttpClientResponse) => {
+                    console.log(`response: ${response.status}`);
+                    resolve(response);
+                });
+            };
+            reader.readAsArrayBuffer(file);
+        });
+    }//addAttachment
+    
 
 
+    public deleteAttachment(odata_id:string){
+        //"@odata.id":string
+        console.log("deleteAttachment", odata_id);
+        
+        return new Promise((resolve, reject) => {
+    
+            let u = odata_id
 
+            this.context.spHttpClient.post(u,
+                SPHttpClient.configurations.v1, {
+                headers: {
+                    //'Accept': 'application/json;odata=nometadata',
+                    'Accept': 'application/json;odata=verbose',
+                    'Content-type': 'application/json;odata=verbose',
+                    'odata-version': '',
+                    'IF-MATCH': '*',
+                    'X-HTTP-Method': 'DELETE',
+                },
+                method: 'POST'
+            })
+            .then((response: SPHttpClientResponse) => {
+                console.log(`response: ${response.status}`);
+                resolve(response);
+            });
+        });
+    }//deleteAttachment
 }
 
 

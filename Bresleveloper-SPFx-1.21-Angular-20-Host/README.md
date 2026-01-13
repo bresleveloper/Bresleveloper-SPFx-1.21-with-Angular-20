@@ -11,4 +11,4 @@ see [Parent project](TBD) for full details
 
 * `gulp build`
 * `gulp bundle --ship`
-* `gulp package-solution --ship `
+* `gulp package-solution --ship`
