@@ -10,6 +10,8 @@ export default class SP_Service implements ISP_Service {
     //usage in spfx component : 
     // private _spService: SP_Service  = new SP_Service(this.context)
     constructor(public context: WebPartContext) {
+        console.log("SP_Service for SPFx 1.21, _v : 1.0.0.0 / 4 ");
+        
         //for ormat, set to global
         // @ts-ignore
         window._spService = this
@@ -299,6 +301,61 @@ export default class SP_Service implements ISP_Service {
             });
         });
     }//deleteAttachment
+
+
+    public async createFileItem(web:string, docLib:string, subfolders:string, 
+                            fileName:string, fileContent:Blob, metadataBody:object){
+        //must be 2 parts, upload the file, then update the fields
+
+        // 1. Upload with $expand to get ListItem info in response
+        let relUrlDocLib = `${docLib}${subfolders? '/' + subfolders:''}`
+        const uploadUrl = `${web}/_api/web/GetFolderByServerRelativeUrl('${relUrlDocLib}')` + 
+                            `/Files/add(url='${fileName}',overwrite=true)?$expand=ListItemAllFields`;
+        
+        const uploadResponse = await this.context.spHttpClient.post(uploadUrl,
+            SPHttpClient.configurations.v1, {
+                body: fileContent,
+                headers: {
+                    //'Accept': 'application/json;odata=verbose',
+                    'Accept': 'application/json;odata=nometadata',
+                    'Content-Type': 'application/octet-stream',
+                    'odata-version': ''
+
+                }
+            }
+        );//end uploadResponse
+
+        if (!uploadResponse.ok) throw new Error('Upload failed');
+        const result = await uploadResponse.json();
+
+        if (metadataBody) {
+            // 2. Update metadata - we already have item type and ID from upload response
+            //const itemType = result.ListItemAllFields.__metadata.type;
+            const itemId = result.ListItemAllFields.Id;
+
+            const updateUrl = `${web}/_api/web/lists/GetByTitle('${docLib}')/items(${itemId})`;
+    
+            //@ts-ignore
+            //metadataBody['__metadata'] = { 'type': itemType };
+
+            await this.context.spHttpClient.post(
+                updateUrl,SPHttpClient.configurations.v1, {
+                    body: JSON.stringify(metadataBody),
+                    headers: {
+                        //'Accept': 'application/json;odata=verbose',
+                        //'Content-Type': 'application/json;odata=verbose',
+                        'Accept': 'application/json;odata=nometadata',
+                        'Content-Type': 'application/json;odata=nometadata',
+                        'IF-MATCH': '*',
+                        'X-HTTP-Method': 'MERGE',
+                        'odata-version': ''
+                    }
+                }
+            );//end update
+        }
+        return result;
+    }//createFileItem
+
 }
 
 

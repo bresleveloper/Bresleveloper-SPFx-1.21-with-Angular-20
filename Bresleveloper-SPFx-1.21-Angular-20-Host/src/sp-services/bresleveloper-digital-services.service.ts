@@ -71,4 +71,7 @@ export interface ISP_Service {
     addAttachment(web:string, listName: string, id: number, file: File): Promise<any>;
 
     deleteAttachment(odata_id:string): Promise<any>
+
+    createFileItem(web:string, docLib:string, subfolders:string, 
+                    fileName:string, fileContent:Blob, metadataBody:object): Promise<any>
 }
